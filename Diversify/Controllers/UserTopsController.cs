@@ -17,5 +17,11 @@ namespace Diversify.Controllers
         {
             _logger = logger;
         }
+
+        [HttpGet]
+        public IActionResult GetUserTopTracks(string accessToken)
+        {
+            return null;
+        }
     }
 }
