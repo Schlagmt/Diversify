@@ -18,10 +18,13 @@ namespace Diversify.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        public IActionResult GetUserTopTracks(string accessToken)
+        [HttpPost]
+        [Route("/UserTops/GetUserTopTracks")]
+        [ProducesResponseType(typeof(string), 200)]
+        [Produces("application/json")]
+        public IActionResult GetUserTopTracks([FromBody] string accessToken)
         {
-            return null;
+            return Ok("hello out therer");
         }
     }
 }

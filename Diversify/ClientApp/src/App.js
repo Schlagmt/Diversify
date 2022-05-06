@@ -28,7 +28,7 @@ const App = () => {
                         <Container>
                             <Row className="justify-content-center">
                                 <SpotifyAuth
-                                    redirectUri='http://localhost:3000'
+                                    redirectUri={document.location.origin}
                                         clientID='752407c80ece4143822dba70f3b8747e'
                                         scopes={['user-modify-playback-state',
                                             'user-follow-modify',
