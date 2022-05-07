@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import { Container, Row } from 'reactstrap';
+import { RecentlyPlayedTrackCard } from './RecentlyPlayedTrackCard';
 import Cookies from 'js-cookie'
 
 export class RecentlyPlayed extends Component {
@@ -30,10 +31,32 @@ export class RecentlyPlayed extends Component {
             }
         })
     }
+
+    getRecentlyPlayedTrackCards() {
+        if (this.state.recentlyPlayed){
+            return this.state.recentlyPlayed.items.map((track) =>
+                <RecentlyPlayedTrackCard recentlyPlayedTrack={track} ></RecentlyPlayedTrackCard>
+            )
+        }
+        else{
+            return null;
+        }
+    }
+    
     
     render() {
+        if (!this.state.recentlyPlayed){
+            return (
+                <h1>Loading...</h1>
+            )
+        }
         return (
-            <h1 id="RecentlyPlayed">Recently Played</h1>
+            <Container>
+                <Row>
+                    <h1 id="RecentlyPlayed">RECENTLY PLAYED</h1>
+                </Row>
+                {this.getRecentlyPlayedTrackCards()}
+            </Container>
         );
     }
 }

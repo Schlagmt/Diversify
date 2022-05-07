@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import { Container, Row, Col } from 'reactstrap';
+import { TopArtistCard } from './TopArtistCard';
 import Cookies from 'js-cookie'
 
 export class TopArtists extends Component {
@@ -30,10 +31,31 @@ export class TopArtists extends Component {
             }
         })  
     }
+
+    getTopArtistCards() {
+        if (this.state.topArtists){
+            return this.state.topArtists.items.map((artist) =>
+                <TopArtistCard topArtist={artist} ></TopArtistCard>
+            )
+        }
+        else{
+            return null;
+        }
+    }
     
     render() {
+        if (!this.state.topArtists){
+            return (
+                <h1>Loading...</h1>
+            )
+        }
         return (
-            <h1 id={this.props.link}>Top Artists</h1>
+            <Container>
+                <Row>
+                    <h1 id={this.props.link}>TOP ARTISTS ({this.props.name})</h1>
+                </Row>
+                {this.getTopArtistCards()}
+            </Container>
         );
     }
 }

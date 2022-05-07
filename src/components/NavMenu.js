@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Container } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouse } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
@@ -26,34 +26,36 @@ export class NavMenu extends Component {
   render () {
     return (
       <header>
-        <Navbar color="faded" className="border-bottom" light>
-          <NavbarBrand tag={Link} to="/"><FontAwesomeIcon icon={faHouse} /></NavbarBrand>
-          <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-          <Collapse isOpen={!this.state.collapsed} navbar>
-            <Nav navbar>
-              <NavItem>
-                <HLink to="#RecentlyPlayed">Recently Played</HLink>
-              </NavItem>
-              <NavItem>
-                <HLink to="#TopArtistsShortTerm">Top Artists Short Term</HLink>
-              </NavItem>
-              <NavItem>
-                <HLink to="#TopArtistsMediumTerm">Top Artists Medium Term</HLink>
-              </NavItem>
-              <NavItem>
-                <HLink to="#TopArtistsLongTerm">Top Artists Long Term</HLink>
-              </NavItem>
-              <NavItem>
-                <HLink to="#TopTracksShortTerm">Top Tracks Short Term</HLink>
-              </NavItem>
-              <NavItem>
-                <HLink to="#TopTracksMediumTerm">Top Tracks Medium Term</HLink>
-              </NavItem>
-              <NavItem>
-                <HLink to="#TopTracksLongTerm">Top Tracks Long Term</HLink>
-              </NavItem>
-            </Nav>
-          </Collapse>
+        <Navbar fixed="top" color='white' className="border-bottom" light>
+          <Container>
+            <NavbarBrand tag={Link} to="/"><FontAwesomeIcon icon={faHouse} /></NavbarBrand>
+            <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
+            <Collapse isOpen={!this.state.collapsed} navbar>
+              <Nav navbar>
+                <NavItem>
+                  <HLink to="#TopArtistsShortTerm">Top Artists Short Term</HLink>
+                </NavItem>
+                <NavItem>
+                  <HLink to="#TopArtistsMediumTerm">Top Artists Medium Term</HLink>
+                </NavItem>
+                <NavItem>
+                  <HLink to="#TopArtistsLongTerm">Top Artists Long Term</HLink>
+                </NavItem>
+                <NavItem>
+                  <HLink to="#TopTracksShortTerm">Top Tracks Short Term</HLink>
+                </NavItem>
+                <NavItem>
+                  <HLink to="#TopTracksMediumTerm">Top Tracks Medium Term</HLink>
+                </NavItem>
+                <NavItem>
+                  <HLink to="#TopTracksLongTerm">Top Tracks Long Term</HLink>
+                </NavItem>
+                <NavItem>
+                  <HLink to="#RecentlyPlayed">Recently Played</HLink>
+                </NavItem>
+              </Nav>
+            </Collapse>
+          </Container>
         </Navbar>
       </header>
     );

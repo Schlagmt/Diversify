@@ -44,8 +44,7 @@ export class UserDetails extends Component {
                         <img src={this.state.userData.images[0].url} alt=""></img>
                     </Col>
                     <Col md="auto">
-                        <h1>WELCOME {this.state.userData.display_name}</h1>
-                        <h3>Followers: {this.state.userData.followers.total}</h3>
+                        <h1>{this.state.userData.display_name}</h1>
                     </Col>
                 </Row>
             </Container>

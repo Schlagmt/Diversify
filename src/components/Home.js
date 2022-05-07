@@ -18,29 +18,29 @@ export class Home extends Component {
                     <UserDetails></UserDetails>
                 </Row>
                 <Row>
+                    <Col>
+                        <TopArtists link={'TopArtistsShortTerm'} time_range={'short_term'} name={'Short Term'}></TopArtists>
+                    </Col>
+                    <Col>
+                        <TopArtists link={'TopArtistsMediumTerm'} time_range={'medium_term'} name={'Medium Term'}></TopArtists>
+                    </Col>
+                    <Col>
+                        <TopArtists link={'TopArtistsLongTerm'} time_range={'long_term'} name={'Long Term'}></TopArtists>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <TopTracks link={'TopTracksShortTerm'} time_range={'short_term'} name={'Short Term'}></TopTracks>
+                    </Col>
+                    <Col>
+                        <TopTracks link={'TopTracksMediumTerm'} time_range={'medium_term'} name={'Medium Term'}></TopTracks>
+                    </Col>
+                    <Col>
+                        <TopTracks link={'TopTracksLongTerm'} time_range={'long_term'} name={'Long Term'}></TopTracks>
+                    </Col>
+                </Row>
+                <Row>
                     <RecentlyPlayed></RecentlyPlayed>
-                </Row>
-                <Row>
-                    <Col>
-                        <TopArtists link={'TopArtistsShortTerm'} time_range={'short_term'}></TopArtists>
-                    </Col>
-                    <Col>
-                        <TopArtists link={'TopArtistsMediumTerm'} time_range={'medium_term'}></TopArtists>
-                    </Col>
-                    <Col>
-                        <TopArtists link={'TopArtistsLongTerm'} time_range={'long_term'}></TopArtists>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <TopTracks link={'TopTracksShortTerm'} time_range={'short_term'}></TopTracks>
-                    </Col>
-                    <Col>
-                        <TopTracks link={'TopTracksMediumTerm'} time_range={'medium_term'}></TopTracks>
-                    </Col>
-                    <Col>
-                        <TopTracks link={'TopTracksLongTerm'} time_range={'long_term'}></TopTracks>
-                    </Col>
                 </Row>
             </Container>
         );
