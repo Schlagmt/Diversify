@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import { UserDetails } from './UserDetails';
 import { RecentlyPlayed } from './RecentlyPlayed';
-import { TopArtists } from './TopArtists';
-import { TopTracks } from './TopTracks';
+import { TopArtistsHome } from './TopArtistsHome';
+import { TopTracksHome } from './TopTracksHome';
 
 export class Home extends Component {
     constructor() {
@@ -14,32 +14,12 @@ export class Home extends Component {
     render() {
         return (
             <Container>
-                <Row>
+                <Row style={{marginBottom: "3em", marginTop: "3em"}}>
                     <UserDetails></UserDetails>
                 </Row>
-                <Row>
-                    <Col>
-                        <TopArtists link={'TopArtistsShortTerm'} time_range={'short_term'} name={'Short Term'}></TopArtists>
-                    </Col>
-                    <Col>
-                        <TopArtists link={'TopArtistsMediumTerm'} time_range={'medium_term'} name={'Medium Term'}></TopArtists>
-                    </Col>
-                    <Col>
-                        <TopArtists link={'TopArtistsLongTerm'} time_range={'long_term'} name={'Long Term'}></TopArtists>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <TopTracks link={'TopTracksShortTerm'} time_range={'short_term'} name={'Short Term'}></TopTracks>
-                    </Col>
-                    <Col>
-                        <TopTracks link={'TopTracksMediumTerm'} time_range={'medium_term'} name={'Medium Term'}></TopTracks>
-                    </Col>
-                    <Col>
-                        <TopTracks link={'TopTracksLongTerm'} time_range={'long_term'} name={'Long Term'}></TopTracks>
-                    </Col>
-                </Row>
-                <Row>
+                <Row md="3" xs="1">
+                    <TopArtistsHome></TopArtistsHome>
+                    <TopTracksHome></TopTracksHome>
                     <RecentlyPlayed></RecentlyPlayed>
                 </Row>
             </Container>

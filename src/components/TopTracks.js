@@ -1,39 +1,45 @@
 import React, { Component } from 'react';
-import $ from 'jquery';
-import { Container, Row, Col } from 'reactstrap';
-import Cookies from 'js-cookie'
+import { Container, Row, Col, ButtonGroup, Button } from 'reactstrap';
+import { Tracks } from './Tracks';
 
 export class TopTracks extends Component {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
 
         this.state = {
-            topTracks: null
+            term: 'short_term'
         }
-    }
-
-    componentDidMount(){
-        this.setState({topTracks: (this.loadData()).responseJSON});
-    }
-
-    loadData(){
-        return $.ajax({
-            url: 'https://api.spotify.com/v1/me/top/tracks?time_range=' + this.props.time_range + '&limit=50',
-            async: false,
-            contentType: "application/json; charset=utf-8",
-            type: "GET",
-            headers: {
-                "Authorization": "Bearer " + Cookies.get('spotifyAuthToken')
-            },
-            error: function (error) {
-                console.log(error);
-            }
-        })
     }
     
     render() {
         return (
-            <h1 id={this.props.link}>Top Track</h1>
+            <Container>
+                <Row style={{marginBottom: "2em", marginTop: "2em"}}>
+                    <Col>
+                        <ButtonGroup style={{width: "100%"}}>
+                            <Button
+                            color="primary"
+                            onClick={() => this.setState({term: 'short_term'})}
+                            >
+                                Short-Term
+                            </Button>
+                            <Button
+                            color="primary"
+                            onClick={() => this.setState({term: 'medium_term'})}
+                            >
+                                Medium-Term
+                            </Button>
+                            <Button
+                            color="primary"
+                            onClick={() => this.setState({term: 'long_term'})}
+                            >
+                                Long-Term
+                            </Button>
+                        </ButtonGroup>
+                    </Col>
+                </Row>
+                <Tracks term={this.state.term}></Tracks>
+            </Container>
         );
     }
 }

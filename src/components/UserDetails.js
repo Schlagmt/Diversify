@@ -39,9 +39,9 @@ export class UserDetails extends Component {
         }
         return (
             <Container>
-                <Row md="2" sm="1">
+                <Row md="2" sx="1">
                     <Col md="auto">
-                        <img src={this.state.userData.images[0].url} alt=""></img>
+                        <img src={this.state.userData.images[0].url} alt="user" style={{borderRadius: "50%"}}></img>
                     </Col>
                     <Col md="auto">
                         <h1>{this.state.userData.display_name}</h1>
