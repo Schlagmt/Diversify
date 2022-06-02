@@ -31,7 +31,7 @@ const App = () => {
                     // Display the login page
                     <Layout>
                         <Container>
-                            <Row className="justify-content-center">
+                            <Row className="justify-content-center" style={{marginTop: '3em'}}>
                                 <SpotifyAuth
                                     redirectUri={document.location.origin}
                                         clientID='752407c80ece4143822dba70f3b8747e'
