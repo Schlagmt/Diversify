@@ -4,22 +4,22 @@ import { Col, NavbarBrand } from 'reactstrap';
 import Cookies from 'js-cookie';
 import { Link } from 'react-router-dom';
 
-export class TopArtistsHome extends Component {
+export class TopTracksHome extends Component {
     constructor() {
         super()
 
         this.state = {
-            topArtists: null
-        }     
+            topTracks: null
+        }
     }
 
     componentDidMount(){
-        this.setState({topArtists: (this.loadData()).responseJSON});
+        this.setState({topTracks: (this.loadData()).responseJSON});
     }
 
     loadData(){
         return $.ajax({
-            url: 'https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=1',
+            url: 'https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=1',
             async: false,
             contentType: "application/json; charset=utf-8",
             type: "GET",
@@ -29,20 +29,20 @@ export class TopArtistsHome extends Component {
             error: function (error) {
                 console.log(error);
             }
-        })  
+        })
     }
     
     render() {
-        if (!this.state.topArtists){
+        if (!this.state.topTracks){
             return (
                 <h1>Loading...</h1>
             )
         }
         return (
             <Col>
-                <img className="bg-image" src={this.state.topArtists.items[0].images[0].url} style={{maxHeight:"100%",maxWidth:"100%"}}></img>
+                <img className="bg-image" src={this.state.topTracks.items[0].album.images[0].url} style={{maxHeight:"100%",maxWidth:"100%"}}></img>
                 <div className="bg-text">
-                    <NavbarBrand tag={Link} to='/TopArtists'><h1>My Top Artists</h1></NavbarBrand>
+                    <NavbarBrand tag={Link} to='/TopTracks'><h1>TOP TRACKS</h1></NavbarBrand>
                 </div>
             </Col>
         );

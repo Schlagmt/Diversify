@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, NavbarBrand } from 'reactstrap';
 import Cookies from 'js-cookie'
+import { Link } from 'react-router-dom';
+import { Genres } from './Genres';
 
 export class UserDetails extends Component {
     constructor() {
@@ -39,12 +41,15 @@ export class UserDetails extends Component {
         }
         return (
             <Container>
-                <Row md="2" sx="1">
-                    <Col md="auto">
+                <Row md="2" sx="1" style={{width: '100%'}}>
+                    <Col md="4">
                         <img src={this.state.userData.images[0].url} alt="user" style={{borderRadius: "50%"}}></img>
                     </Col>
-                    <Col md="auto">
-                        <h1>{this.state.userData.display_name}</h1>
+                    <Col md='8'>
+                        <Row>
+                            <NavbarBrand><h1>{this.state.userData.display_name}</h1></NavbarBrand>
+                        </Row>
+                        <Genres></Genres>
                     </Col>
                 </Row>
             </Container>

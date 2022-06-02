@@ -5,28 +5,28 @@ import Cookies from 'js-cookie';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFire, faDroplet, faIcicles } from '@fortawesome/free-solid-svg-icons';
 
-export class Artists extends Component {
+export class Tracks extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            topArtists: null
+            topTracks: null
         }
     }
 
     componentDidMount(){
-        this.setState({topArtists: (this.loadData()).responseJSON});
+        this.setState({topTracks: (this.loadData()).responseJSON});
     }
 
     componentDidUpdate(prevProps){
         if (prevProps.term !== this.props.term){
-            this.setState({topArtists: (this.loadData()).responseJSON});
+            this.setState({topTracks: (this.loadData()).responseJSON});
         }
     }
 
     loadData(){
         return $.ajax({
-            url: 'https://api.spotify.com/v1/me/top/artists?time_range=' + this.props.term + '&limit=50',
+            url: 'https://api.spotify.com/v1/me/top/tracks?time_range=' + this.props.term + '&limit=50',
             async: false,
             contentType: "application/json; charset=utf-8",
             type: "GET",
@@ -39,14 +39,17 @@ export class Artists extends Component {
         })
     }
 
-    displayTopNineArtists(){
-        if (this.state.topArtists){
-            var topNine = this.state.topArtists.items.slice(0,9)
-            return topNine.map((artist, index) =>
-                <Col key={artist.id} style={{padding: 0}}>
+    displayTopNineTracks(){
+        if (this.state.topTracks){
+            var topNine = this.state.topTracks.items.slice(0,9)
+            return topNine.map((track, index) =>
+                <Col key={track.id} style={{padding: 0}}>
                     <div className='containerTrack'>
-                        <img  className="imageTrack" src={artist.images[0].url} alt={artist.name} style={{aspectRatio: '1'}}></img>
-                        <div class="overlayTrack">{index + 1}. {artist.name} {this.popularityImage(artist.popularity)}</div>
+                        <img  className="imageTrack" src={track.album.images[0].url} alt={track.name}></img>
+                        <div class="overlayTrack">
+                            {index + 1}. {track.name} {this.popularityImage(track.popularity)}
+                            <div style={{fontSize: 'xx-small'}}>{track.album.artists[0].name}</div>
+                        </div>
                     </div>
                 </Col>
             )
@@ -56,22 +59,22 @@ export class Artists extends Component {
         }
     }
 
-    displayRestArtists(){
-        if (this.state.topArtists){
-            var rest = this.state.topArtists.items.slice(9,50)
-            return rest.map((artist, index) =>
+    displayRestTracks(){
+        if (this.state.topTracks){
+            var rest = this.state.topTracks.items.slice(9,50)
+            return rest.map((track, index) =>
                 <tr>
                     <th>
                         {index + 10}
                     </th>
                     <td>
-                        <img  className="imageTrack" src={artist.images[2].url} alt={artist.name} style={{maxHeight: '2em', maxWidth: '2em'}}></img>
+                        <img  className="imageTrack" src={track.album.images[2].url} alt={track.name} style={{maxHeight: '2em', maxWidth: '2em'}}></img>
                     </td>
                     <td>
-                        {artist.name}
+                        {track.name}<div style={{fontSize: 'xx-small'}}>{track.album.artists[0].name}</div>
                     </td>
                     <td>
-                        {this.popularityImage(artist.popularity)}
+                        {this.popularityImage(track.popularity)}
                     </td>
                 </tr>
             )
@@ -96,7 +99,7 @@ export class Artists extends Component {
     }
     
     render() {
-        if (!this.state.topArtists){
+        if (!this.state.topTracks){
             return (
                 <h1>Loading...</h1>
             )
@@ -104,7 +107,7 @@ export class Artists extends Component {
         return (
             <Container>
                 <Row md="3" xs="3">
-                    {this.displayTopNineArtists()}
+                    {this.displayTopNineTracks()}
                 </Row>
                 <Row style={{marginBottom: "3em", marginTop: "3em"}}>
                     <Table>
@@ -112,17 +115,17 @@ export class Artists extends Component {
                             <th>
                                 #
                             </th>
-                            <th>
+                            <th style={{minWidth: '57px'}}>
                                 
                             </th>
                             <th>
-                                Artist
+                                Track
                             </th>
                             <th>
-                                Popularity
+                                
                             </th>
                         </tr>
-                        {this.displayRestArtists()}
+                        {this.displayRestTracks()}
                     </Table>
                 </Row>
             </Container>

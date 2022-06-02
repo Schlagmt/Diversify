@@ -1,17 +1,17 @@
 import React from 'react';
 import { Route } from 'react-router';
 import { Layout } from './components/Layout';
-import { Home } from './components/Home';
-import { TopTracks } from './components/TopTracks';
-import { TopArtists } from './components/TopArtists';
+import { Home } from './components/Home/Home';
+import { TopTracks } from './components/Track/TopTracks';
+import { TopArtists } from './components/Artist/TopArtists';
+import { RecentlyPlayed } from './components/RecentlyPlayed/RecentlyPlayed';
 import { Container, Row } from 'reactstrap';
 import { SpotifyApiContext } from 'react-spotify-api'
-import Cookies from 'js-cookie'
-
+import  Cookies  from 'js-cookie'
 import { SpotifyAuth } from 'react-spotify-auth'
 import 'react-spotify-auth/dist/index.css'
-
 import './custom.css'
+
 
 const App = () => {
     const [token, setToken] = React.useState(Cookies.get('spotifyAuthToken'));
@@ -24,7 +24,7 @@ const App = () => {
                             <Route exact path='/' component={Home} />
                             <Route exact path='/TopTracks' component={TopTracks} />
                             <Route exact path='/TopArtists' component={TopArtists} />
-                            <Route exact path='/RecentlyPlayed' component={TopArtists} />
+                            <Route exact path='/RecentlyPlayed' component={RecentlyPlayed} />
                         </Layout>
                     </SpotifyApiContext.Provider>
                 ) : (
