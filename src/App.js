@@ -7,8 +7,8 @@ import { TopArtists } from './components/Artist/TopArtists';
 import { RecentlyPlayed } from './components/RecentlyPlayed/RecentlyPlayed';
 import { Container, Row } from 'reactstrap';
 import { SpotifyApiContext } from 'react-spotify-api'
-import  Cookies  from 'js-cookie'
 import { SpotifyAuth } from 'react-spotify-auth'
+import  Cookies  from 'js-cookie'
 import 'react-spotify-auth/dist/index.css'
 import './custom.css'
 

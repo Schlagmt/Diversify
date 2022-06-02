@@ -37,8 +37,8 @@ export class Genres extends Component {
         var genres = []
         _.forEach(this.state.topArtists.items, (item) => {
             _.forEach(item.genres, (genre) => {
-                var val = _.filter(genres, (g) => { return g[0] == genre });
-                if (val.length == 0){
+                var val = _.filter(genres, (g) => { return g[0] === genre });
+                if (val.length === 0){
                     genres.push([genre, 1]);
                 } else {
                     var index = _.indexOf(genres, val[0]);

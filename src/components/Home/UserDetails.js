@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import { Container, Row, Col, NavbarBrand } from 'reactstrap';
 import Cookies from 'js-cookie'
-import { Link } from 'react-router-dom';
 import { Genres } from './Genres';
 
 export class UserDetails extends Component {

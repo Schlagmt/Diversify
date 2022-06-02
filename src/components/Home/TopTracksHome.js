@@ -40,7 +40,7 @@ export class TopTracksHome extends Component {
         }
         return (
             <Col>
-                <img className="bg-image" src={this.state.topTracks.items[0].album.images[0].url} style={{maxHeight:"100%",maxWidth:"100%"}}></img>
+                <img className="bg-image" src={this.state.topTracks.items[0].album.images[0].url} alt={this.state.topTracks.items[0].album.name} style={{maxHeight:"100%",maxWidth:"100%"}}></img>
                 <div className="bg-text">
                     <NavbarBrand tag={Link} to='/TopTracks'><h1>TOP TRACKS</h1></NavbarBrand>
                 </div>
