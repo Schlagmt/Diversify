@@ -6,7 +6,6 @@ import { TopTracks } from './components/Track/TopTracks';
 import { TopArtists } from './components/Artist/TopArtists';
 import { RecentlyPlayed } from './components/RecentlyPlayed/RecentlyPlayed';
 import { Container, Row } from 'reactstrap';
-import { SpotifyApiContext } from 'react-spotify-api'
 import { SpotifyAuth } from 'react-spotify-auth'
 import  Cookies  from 'js-cookie'
 import 'react-spotify-auth/dist/index.css'
@@ -19,14 +18,12 @@ const App = () => {
     return (
             <div className='app'>
                 {token ? (
-                    <SpotifyApiContext.Provider value={token}>
-                        <Layout>
-                            <Route exact path='/' component={Home} />
-                            <Route exact path='/TopTracks' component={TopTracks} />
-                            <Route exact path='/TopArtists' component={TopArtists} />
-                            <Route exact path='/RecentlyPlayed' component={RecentlyPlayed} />
-                        </Layout>
-                    </SpotifyApiContext.Provider>
+                    <Layout>
+                        <Route exact path='/' component={Home} />
+                        <Route exact path='/TopTracks' component={TopTracks} />
+                        <Route exact path='/TopArtists' component={TopArtists} />
+                        <Route exact path='/RecentlyPlayed' component={RecentlyPlayed} />
+                    </Layout>
                 ) : (
                     // Display the login page
                     <Layout>
