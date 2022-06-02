@@ -5,7 +5,6 @@
   "version": "1.0.0",
   "private": true,
   "jest": {
-    "verbose": true,
     "transformIgnorePatterns": ["/node_modules/(?!react-spotify-api)", "/node_modules/(?!react-spotify-auth)"]
   },
   "dependencies": {
