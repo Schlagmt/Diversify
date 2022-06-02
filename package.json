@@ -2,9 +2,12 @@
   "name": "diversify",
   "homepage": ".",
   "proxy": "http://localhost:3000",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
-  "type": "module",
+  "jest": {
+    "verbose": true,
+    "transformIgnorePatterns": ["/node_modules/(?!react-spotify-api)", "/node_modules/(?!react-spotify-auth)"]
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
