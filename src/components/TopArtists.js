@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, ButtonGroup, Button } from 'reactstrap';
-import { Tracks } from './Tracks';
+import { Artists } from './Artists';
 
-export class RecentlyPlayed extends Component {
+export class TopArtists extends Component {
     constructor() {
         super()
 
@@ -38,7 +38,7 @@ export class RecentlyPlayed extends Component {
                         </ButtonGroup>
                     </Col>
                 </Row>
-                <Tracks term={this.state.term}></Tracks>
+                <Artists term={this.state.term}></Artists>
             </Container>
         );
     }

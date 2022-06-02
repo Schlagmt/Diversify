@@ -21,19 +21,19 @@ export class TopTracks extends Component {
                             color="primary"
                             onClick={() => this.setState({term: 'short_term'})}
                             >
-                                Short-Term
+                                Last Month
                             </Button>
                             <Button
                             color="primary"
                             onClick={() => this.setState({term: 'medium_term'})}
                             >
-                                Medium-Term
+                                Last 6 Months
                             </Button>
                             <Button
                             color="primary"
                             onClick={() => this.setState({term: 'long_term'})}
                             >
-                                Long-Term
+                                All Time
                             </Button>
                         </ButtonGroup>
                     </Col>

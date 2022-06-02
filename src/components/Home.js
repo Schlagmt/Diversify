@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row } from 'reactstrap';
 import { UserDetails } from './UserDetails';
-import { RecentlyPlayed } from './RecentlyPlayed';
+import { RecentlyPlayedHome } from './RecentlyPlayedHome';
 import { TopArtistsHome } from './TopArtistsHome';
 import { TopTracksHome } from './TopTracksHome';
 
@@ -20,7 +20,7 @@ export class Home extends Component {
                 <Row md="3" xs="1">
                     <TopArtistsHome></TopArtistsHome>
                     <TopTracksHome></TopTracksHome>
-                    <RecentlyPlayed></RecentlyPlayed>
+                    <RecentlyPlayedHome></RecentlyPlayedHome>
                 </Row>
             </Container>
         );

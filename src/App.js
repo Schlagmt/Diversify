@@ -3,6 +3,7 @@ import { Route } from 'react-router';
 import { Layout } from './components/Layout';
 import { Home } from './components/Home';
 import { TopTracks } from './components/TopTracks';
+import { TopArtists } from './components/TopArtists';
 import { Container, Row } from 'reactstrap';
 import { SpotifyApiContext } from 'react-spotify-api'
 import Cookies from 'js-cookie'
@@ -22,6 +23,8 @@ const App = () => {
                         <Layout>
                             <Route exact path='/' component={Home} />
                             <Route exact path='/TopTracks' component={TopTracks} />
+                            <Route exact path='/TopArtists' component={TopArtists} />
+                            <Route exact path='/RecentlyPlayed' component={TopArtists} />
                         </Layout>
                     </SpotifyApiContext.Provider>
                 ) : (
