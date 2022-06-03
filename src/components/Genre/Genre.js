@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Container, Row, NavbarBrand } from 'reactstrap';
+import { Row, NavbarBrand } from 'reactstrap';
 import $ from 'jquery';
 import Cookies from 'js-cookie';
 import _ from 'lodash';
 import { Genres } from '../Shared/Genres';
 import { Artists } from '../Shared/Artists';
+import { Tracks } from '../Shared/Tracks';
 
 
 export class Genre extends Component {
@@ -64,10 +65,13 @@ export class Genre extends Component {
                 <Row style={{marginBottom: "1.5em", marginTop: "1.5em"}}>
                     <NavbarBrand><h3>TRACKS</h3></NavbarBrand>
                 </Row>
+                <Row md="6" xs="2">
+                    <Tracks data={this.state.genreData.tracks.items} limit={24}></Tracks>
+                </Row>
                 <Row style={{marginBottom: "1.5em", marginTop: "1.5em"}}>
                     <NavbarBrand><h3>SIMILAR GENRES</h3></NavbarBrand>
                 </Row>
-                <Genres data={this.state.genreData.artists.items} limit={20}></Genres>
+                <Genres data={this.state.genreData.artists.items} limit={100}></Genres>
             </div>
         );
     }

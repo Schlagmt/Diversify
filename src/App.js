@@ -34,7 +34,7 @@ const App = () => {
                                 <SpotifyAuth
                                     redirectUri={document.location.href}
                                         clientID='752407c80ece4143822dba70f3b8747e' /*Development*/
-                                        /*clientID='e8f25d7d2c6b4458b7509bd675e27043'*/ /*Production*/
+                                        /*clientID='e8f25d7d2c6b4458b7509bd675e27043' /*Production*/
                                         scopes={['user-modify-playback-state',
                                             'user-follow-modify',
                                             'user-read-recently-played',

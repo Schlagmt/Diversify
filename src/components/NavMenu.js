@@ -25,9 +25,9 @@ export class NavMenu extends Component {
   render () {
     return (
       <header>
-        <Navbar className="border-bottom" light>
+        <Navbar light>
           <Container className="d-flex justify-content-center">
-            <NavbarBrand tag={Link} to="/"><FontAwesomeIcon icon={faHouse} /></NavbarBrand>
+            <NavbarBrand tag={Link} to="/"><FontAwesomeIcon icon={faHouse} style={{color: 'white'}} /></NavbarBrand>
           </Container>
         </Navbar>
       </header>
