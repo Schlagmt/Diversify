@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Diversify/static/css/main.d650fd73.chunk.css",
-    "main.js": "/Diversify/static/js/main.3bb495ca.chunk.js",
-    "main.js.map": "/Diversify/static/js/main.3bb495ca.chunk.js.map",
+    "main.js": "/Diversify/static/js/main.308f94ee.chunk.js",
+    "main.js.map": "/Diversify/static/js/main.308f94ee.chunk.js.map",
     "runtime-main.js": "/Diversify/static/js/runtime-main.a02e1c68.js",
     "runtime-main.js.map": "/Diversify/static/js/runtime-main.a02e1c68.js.map",
     "static/css/2.179ffa5d.chunk.css": "/Diversify/static/css/2.179ffa5d.chunk.css",
@@ -18,6 +18,6 @@
     "static/css/2.179ffa5d.chunk.css",
     "static/js/2.78b92739.chunk.js",
     "static/css/main.d650fd73.chunk.css",
-    "static/js/main.3bb495ca.chunk.js"
+    "static/js/main.308f94ee.chunk.js"
   ]
 }
