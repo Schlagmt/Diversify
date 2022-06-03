@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 export class Genres extends Component {
     getTopGenres () {
-
         var genres = []
         _.forEach(this.props.data, (item) => {
             _.forEach(item.genres, (genre) => {
@@ -25,7 +24,6 @@ export class Genres extends Component {
                 <NavbarBrand tag={Link} to={'/Genre?genre=' + genre[0]}><div className='bg-genre'>{_.upperCase(genre[0])}</div></NavbarBrand>
             </Col>
         )
-
     }
     
     render() {

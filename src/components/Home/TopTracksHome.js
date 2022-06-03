@@ -39,10 +39,10 @@ export class TopTracksHome extends Component {
             )
         }
         return (
-            <Col>
+            <Col style={{marginBottom: '2em'}}>
                 <img className="bg-image" src={this.state.topTracks.items[0].album.images[0].url} alt={this.state.topTracks.items[0].album.name} style={{aspectRatio: '1',maxHeight:"100%",maxWidth:"100%"}}></img>
                 <div className="bg-text">
-                    <NavbarBrand tag={Link} to='/TopTracks'><h1>TOP TRACKS</h1></NavbarBrand>
+                    <NavbarBrand tag={Link} to='/TopTracks'>TOP TRACKS</NavbarBrand>
                 </div>
             </Col>
         );

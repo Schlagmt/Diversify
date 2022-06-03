@@ -39,10 +39,10 @@ export class TopArtistsHome extends Component {
             )
         }
         return (
-            <Col>
+            <Col style={{marginBottom: '2em'}}>
                 <img className="bg-image" src={this.state.topArtists.items[0].images[0].url} alt={this.state.topArtists.items[0].name} style={{aspectRatio: '1',maxHeight:"100%",maxWidth:"100%"}}></img>
                 <div className="bg-text">
-                    <NavbarBrand tag={Link} to='/TopArtists'><h1>TOP ARTISTS</h1></NavbarBrand>
+                    <NavbarBrand tag={Link} to='/TopArtists'>TOP ARTISTS</NavbarBrand>
                 </div>
             </Col>
         );

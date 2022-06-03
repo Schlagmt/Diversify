@@ -23,7 +23,7 @@ export class Home extends Component {
                     <TopTracksHome></TopTracksHome>
                     <RecentlyPlayedHome></RecentlyPlayedHome>
                 </Row>
-                <Row>
+                <Row style={{marginBottom: '2em'}}>
                     <RecommendationHome></RecommendationHome>
                 </Row>
             </Container>
