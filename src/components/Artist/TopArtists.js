@@ -17,19 +17,19 @@ export class TopArtists extends Component {
                 <Row style={{marginBottom: "2em", marginTop: "2em"}}>
                     <Col>
                         <ButtonGroup style={{width: "100%"}}>
-                            <Button
+                            <Button outline
                             color="primary"
                             onClick={() => this.setState({term: 'short_term'})}
                             >
                                 Last Month
                             </Button>
-                            <Button
+                            <Button outline
                             color="primary"
                             onClick={() => this.setState({term: 'medium_term'})}
                             >
                                 Last 6 Months
                             </Button>
-                            <Button
+                            <Button outline
                             color="primary"
                             onClick={() => this.setState({term: 'long_term'})}
                             >

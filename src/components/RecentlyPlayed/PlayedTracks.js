@@ -37,10 +37,10 @@ export class PlayedTracks extends Component {
     displayRecentTracks(){
         if (this.state.recentTracks){
             return this.state.recentTracks.items.map((track, index) =>
-                <Col key={track.id} style={{padding: 0}}>
+                <Col key={index} style={{padding: 0}}>
                     <div className='containerTrack'>
-                        <img  className="imageTrack" src={track.track.album.images[0].url} alt={track.track.name}></img>
-                        <div class="overlayTrack">
+                        <img className="imageTrack" src={track.track.album.images[0].url} alt={track.track.name}></img>
+                        <div className="overlayTrack">
                             {index + 1}. {track.track.name} {this.popularityImage(track.track.popularity)}
                             <div style={{fontSize: 'xx-small'}}>{track.track.album.artists[0].name}</div>
                             <div style={{fontSize: 'xx-small'}}><Moment>{track.played_at}</Moment></div>

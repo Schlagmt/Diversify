@@ -4,6 +4,7 @@ import { Container, Row, Col, Table } from 'reactstrap';
 import Cookies from 'js-cookie';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFire, faDroplet, faIcicles } from '@fortawesome/free-solid-svg-icons';
+import { Genres } from '../Shared/Genres'
 
 export class Artists extends Component {
     constructor(props) {
@@ -45,8 +46,8 @@ export class Artists extends Component {
             return topNine.map((artist, index) =>
                 <Col key={artist.id} style={{padding: 0}}>
                     <div className='containerTrack'>
-                        <img  className="imageTrack" src={artist.images[0].url} alt={artist.name} style={{aspectRatio: '1'}}></img>
-                        <div class="overlayTrack">{index + 1}. {artist.name} {this.popularityImage(artist.popularity)}</div>
+                        <img className="imageTrack" src={artist.images[0].url} alt={artist.name} style={{aspectRatio: '1'}}></img>
+                        <div className="overlayTrack">{index + 1}. {artist.name} {this.popularityImage(artist.popularity)}</div>
                     </div>
                 </Col>
             )
@@ -60,12 +61,12 @@ export class Artists extends Component {
         if (this.state.topArtists){
             var rest = this.state.topArtists.items.slice(9,50)
             return rest.map((artist, index) =>
-                <tr>
+                <tr key={artist.id}>
                     <th>
                         {index + 10}
                     </th>
                     <td>
-                        <img  className="imageTrack" src={artist.images[2].url} alt={artist.name} style={{maxHeight: '2em', maxWidth: '2em'}}></img>
+                        <img className="imageTrack" src={artist.images[2].url} alt={artist.name} style={{maxHeight: '2em', maxWidth: '2em'}}></img>
                     </td>
                     <td>
                         {artist.name}
@@ -103,26 +104,34 @@ export class Artists extends Component {
         }
         return (
             <Container>
-                <Row md="3" xs="3">
+                <Row>
+                    <Genres data={this.state.topArtists.items} limit={20}></Genres>
+                </Row>
+                <Row style={{marginBottom: "3em", marginTop: "2em"}} md="3" xs="3">
                     {this.displayTopNineArtists()}
                 </Row>
                 <Row style={{marginBottom: "3em", marginTop: "3em"}}>
                     <Table>
-                        <tr>
-                            <th>
-                                #
-                            </th>
-                            <th style={{minWidth: '57px'}}>
-                                
-                            </th>
-                            <th>
-                                Artist
-                            </th>
-                            <th>
-                                
-                            </th>
-                        </tr>
-                        {this.displayRestArtists()}
+                        <thead>
+                            <tr>
+                                <th>
+                                    #
+                                </th>
+                                <th style={{minWidth: '57px'}}>
+                                    
+                                </th>
+                                <th>
+                                    Artist
+                                </th>
+                                <th>
+                                    
+                                </th>
+                            </tr>    
+                        </thead>
+                        
+                        <tbody>
+                            {this.displayRestArtists()}
+                        </tbody>
                     </Table>
                 </Row>
             </Container>

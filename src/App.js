@@ -30,8 +30,9 @@ const App = () => {
                         <Container>
                             <Row className="justify-content-center" style={{marginTop: '3em'}}>
                                 <SpotifyAuth
-                                    redirectUri={document.location.origin}
-                                        clientID='752407c80ece4143822dba70f3b8747e'
+                                    redirectUri={document.location.href}
+                                        clientID='752407c80ece4143822dba70f3b8747e' /*Development*/
+                                        /*clientID='e8f25d7d2c6b4458b7509bd675e27043'*/ /*Production*/
                                         scopes={['user-modify-playback-state',
                                             'user-follow-modify',
                                             'user-read-recently-played',

@@ -45,8 +45,8 @@ export class Tracks extends Component {
             return topNine.map((track, index) =>
                 <Col key={track.id} style={{padding: 0}}>
                     <div className='containerTrack'>
-                        <img  className="imageTrack" src={track.album.images[0].url} alt={track.name}></img>
-                        <div class="overlayTrack">
+                        <img className="imageTrack" src={track.album.images[0].url} alt={track.name}></img>
+                        <div className="overlayTrack">
                             {index + 1}. {track.name} {this.popularityImage(track.popularity)}
                             <div style={{fontSize: 'xx-small'}}>{track.album.artists[0].name}</div>
                         </div>
@@ -63,12 +63,12 @@ export class Tracks extends Component {
         if (this.state.topTracks){
             var rest = this.state.topTracks.items.slice(9,50)
             return rest.map((track, index) =>
-                <tr>
+                <tr key={track.id}>
                     <th>
                         {index + 10}
                     </th>
                     <td>
-                        <img  className="imageTrack" src={track.album.images[2].url} alt={track.name} style={{maxHeight: '2em', maxWidth: '2em'}}></img>
+                        <img className="imageTrack" src={track.album.images[2].url} alt={track.name} style={{maxHeight: '2em', maxWidth: '2em'}}></img>
                     </td>
                     <td>
                         {track.name}<div style={{fontSize: 'xx-small'}}>{track.album.artists[0].name}</div>
@@ -111,21 +111,25 @@ export class Tracks extends Component {
                 </Row>
                 <Row style={{marginBottom: "3em", marginTop: "3em"}}>
                     <Table>
-                        <tr>
-                            <th>
-                                #
-                            </th>
-                            <th style={{minWidth: '57px'}}>
-                                
-                            </th>
-                            <th>
-                                Track
-                            </th>
-                            <th>
-                                
-                            </th>
-                        </tr>
-                        {this.displayRestTracks()}
+                        <thead>
+                            <tr>
+                                <th>
+                                    #
+                                </th>
+                                <th style={{minWidth: '57px'}}>
+                                    
+                                </th>
+                                <th>
+                                    Track
+                                </th>
+                                <th>
+                                    
+                                </th>
+                            </tr> 
+                        </thead>
+                        <tbody>
+                            {this.displayRestTracks()}
+                        </tbody>
                     </Table>
                 </Row>
             </Container>

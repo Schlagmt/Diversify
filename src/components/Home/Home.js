@@ -8,7 +8,7 @@ import { TopTracksHome } from './TopTracksHome';
 export class Home extends Component {
     constructor() {
         super()
-        window.history.pushState("", "", document.location.origin);
+        window.history.pushState("", "", document.location.href);
     }
     
     render() {

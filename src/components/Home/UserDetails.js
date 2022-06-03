@@ -2,22 +2,24 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import { Container, Row, Col, NavbarBrand } from 'reactstrap';
 import Cookies from 'js-cookie'
-import { Genres } from './Genres';
+import { Genres } from '../Shared/Genres';
 
 export class UserDetails extends Component {
     constructor() {
         super()
 
         this.state = {
-            userData: null
+            userData: null,
+            genreData: null
         }
     }
 
     componentDidMount() {
-        this.setState({userData: (this.loadData()).responseJSON})
+        this.setState({userData: (this.loadUserData()).responseJSON})
+        this.setState({genreData: (this.loadGenreData()).responseJSON})
     }
 
-    loadData(){
+    loadUserData(){
         return $.ajax({
             url: 'https://api.spotify.com/v1/me',
             async: false,
@@ -30,6 +32,21 @@ export class UserDetails extends Component {
                 console.log(error);
             }
         });
+    }
+
+    loadGenreData(){
+        return $.ajax({
+            url: 'https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=50',
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            type: "GET",
+            headers: {
+                "Authorization": "Bearer " + Cookies.get('spotifyAuthToken')
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        })
     }
 
     render() {
@@ -45,10 +62,10 @@ export class UserDetails extends Component {
                         <img src={this.state.userData.images[0].url} alt="user" style={{borderRadius: "50%"}}></img>
                     </Col>
                     <Col md='8'>
-                        <Row>
+                        <Row className="d-flex justify-content-center">
                             <NavbarBrand><h1>{this.state.userData.display_name}</h1></NavbarBrand>
                         </Row>
-                        <Genres></Genres>
+                        <Genres data={this.state.genreData.items} limit={10}></Genres>
                     </Col>
                 </Row>
             </Container>
