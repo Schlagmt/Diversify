@@ -4,6 +4,7 @@ import { UserDetails } from './UserDetails';
 import { RecentlyPlayedHome } from './RecentlyPlayedHome';
 import { TopArtistsHome } from './TopArtistsHome';
 import { TopTracksHome } from './TopTracksHome';
+import { RecommendationHome } from './RecommendationHome';
 
 export class Home extends Component {
     constructor() {
@@ -21,6 +22,9 @@ export class Home extends Component {
                     <TopArtistsHome></TopArtistsHome>
                     <TopTracksHome></TopTracksHome>
                     <RecentlyPlayedHome></RecentlyPlayedHome>
+                </Row>
+                <Row>
+                    <RecommendationHome></RecommendationHome>
                 </Row>
             </Container>
         );
