@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import { Container, Row, Col } from 'reactstrap';
 import Cookies from 'js-cookie';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFire, faDroplet, faIcicles } from '@fortawesome/free-solid-svg-icons';
+import { Emoji } from '../Shared/Emoji';
 import Moment from 'react-moment';
 
 export class PlayedTracks extends Component {
@@ -41,7 +40,7 @@ export class PlayedTracks extends Component {
                     <div className='containerTrack'>
                         <img className="imageTrack" src={track.track.album.images[0].url} alt={track.track.name}></img>
                         <div className="overlayTrack">
-                            {index + 1}. {track.track.name} {this.popularityImage(track.track.popularity)}
+                            {index + 1}. {track.track.name} <Emoji score={track.track.popularity}></Emoji>
                             <div style={{fontSize: 'xx-small'}}>{track.track.album.artists[0].name}</div>
                             <div style={{fontSize: 'xx-small'}}><Moment>{track.played_at}</Moment></div>
                         </div>
@@ -51,20 +50,6 @@ export class PlayedTracks extends Component {
         }
         else{
             return null;
-        }
-    }
-
-    popularityImage(score){
-        if (score >= 90){
-            return <FontAwesomeIcon icon={faFire} style={{color: 'red'}}/>
-        } else if (score >= 80){
-            return <FontAwesomeIcon icon={faFire} style={{color: 'orange'}}/>
-        } else if (score >= 70){
-            return <FontAwesomeIcon icon={faFire} style={{color: 'yellow'}}/>
-        } else if (score >= 60){
-            return <FontAwesomeIcon icon={faDroplet} style={{color: 'lightblue'}}/>
-        } else {
-            return <FontAwesomeIcon icon={faIcicles} style={{color: 'blue'}}/>
         }
     }
     

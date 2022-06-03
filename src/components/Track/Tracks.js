@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import { Container, Row, Col, Table } from 'reactstrap';
 import Cookies from 'js-cookie';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFire, faDroplet, faIcicles } from '@fortawesome/free-solid-svg-icons';
+import { Emoji } from '../Shared/Emoji';
 
 export class Tracks extends Component {
     constructor(props) {
@@ -47,7 +46,7 @@ export class Tracks extends Component {
                     <div className='containerTrack'>
                         <img className="imageTrack" src={track.album.images[0].url} alt={track.name}></img>
                         <div className="overlayTrack">
-                            {index + 1}. {track.name} {this.popularityImage(track.popularity)}
+                            {index + 1}. {track.name} <Emoji score={track.popularity}></Emoji>
                             <div style={{fontSize: 'xx-small'}}>{track.album.artists[0].name}</div>
                         </div>
                     </div>
@@ -74,27 +73,13 @@ export class Tracks extends Component {
                         {track.name}<div style={{fontSize: 'xx-small'}}>{track.album.artists[0].name}</div>
                     </td>
                     <td>
-                        {this.popularityImage(track.popularity)}
+                        <Emoji score={track.popularity}></Emoji>
                     </td>
                 </tr>
             )
         }
         else{
             return null;
-        }
-    }
-
-    popularityImage(score){
-        if (score >= 90){
-            return <FontAwesomeIcon icon={faFire} style={{color: 'red'}}/>
-        } else if (score >= 80){
-            return <FontAwesomeIcon icon={faFire} style={{color: 'orange'}}/>
-        } else if (score >= 70){
-            return <FontAwesomeIcon icon={faFire} style={{color: 'yellow'}}/>
-        } else if (score >= 60){
-            return <FontAwesomeIcon icon={faDroplet} style={{color: 'lightblue'}}/>
-        } else {
-            return <FontAwesomeIcon icon={faIcicles} style={{color: 'blue'}}/>
         }
     }
     

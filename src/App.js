@@ -5,6 +5,7 @@ import { Home } from './components/Home/Home';
 import { TopTracks } from './components/Track/TopTracks';
 import { TopArtists } from './components/Artist/TopArtists';
 import { RecentlyPlayed } from './components/RecentlyPlayed/RecentlyPlayed';
+import { Genre } from './components/Genre/Genre';
 import { Container, Row } from 'reactstrap';
 import { SpotifyAuth } from 'react-spotify-auth'
 import  Cookies  from 'js-cookie'
@@ -23,6 +24,7 @@ const App = () => {
                         <Route exact path='/TopTracks' component={TopTracks} />
                         <Route exact path='/TopArtists' component={TopArtists} />
                         <Route exact path='/RecentlyPlayed' component={RecentlyPlayed} />
+                        <Route exact path='/Genre' component={Genre} />
                     </Layout>
                 ) : (
                     // Display the login page

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, NavbarBrand } from 'reactstrap';
 import _ from 'lodash';
+import { Link } from 'react-router-dom';
 
 export class Genres extends Component {
     getTopGenres () {
@@ -20,8 +21,8 @@ export class Genres extends Component {
 
         genres = _.orderBy(genres, (genre) => { return genre[1] }, 'desc').slice(0,this.props.limit);
         return genres.map((genre) =>
-            <Col key={_.upperCase(genre[0])} xs='auto' style={{paddingBottom: '.5em', paddingLeft: 0}}>
-                <div className='bg-genre'><NavbarBrand>{_.upperCase(genre[0])}</NavbarBrand></div>
+            <Col key={_.upperCase(genre[0])} xs='auto' style={{paddingBottom: '.5em', paddingLeft: '.25em', paddingRight: '.25em'}}>
+                <div className='bg-genre'><NavbarBrand style={{marginRight: '1rem'}} tag={Link} to={'/Genre?genre=' + genre[0]}>{_.upperCase(genre[0])}</NavbarBrand></div>
             </Col>
         )
 

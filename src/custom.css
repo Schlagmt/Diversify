@@ -67,6 +67,15 @@ hr{
   text-align: center;
 }
 
+.bg-artist {
+  font-weight: bold;
+}
+
+.circle-artist{
+  border-radius: 50%;
+  width: -webkit-fill-available;
+}
+
 .containerTrack {
   position: relative;
   width: 100%;
@@ -135,6 +144,15 @@ a:hover {
   background-color: #1ed760;
   border-color: #1ed760;
   box-shadow: #1ed760;
+}
+
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.navbar-brand{
+  margin-right: 0;
 }
 
 

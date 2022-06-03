@@ -41,7 +41,7 @@ export class RecentlyPlayedHome extends Component {
         }
         return (
             <Col>
-                <img className="bg-image" src={this.state.recentlyPlayed.items[0].track.album.images[0].url} alt={this.state.recentlyPlayed.items[0].track.album.name} style={{maxHeight:"100%",maxWidth:"100%"}}></img>
+                <img className="bg-image" src={this.state.recentlyPlayed.items[0].track.album.images[0].url} alt={this.state.recentlyPlayed.items[0].track.album.name} style={{aspectRatio: '1',maxHeight:"100%",maxWidth:"100%"}}></img>
                 <div className="bg-text">
                     <NavbarBrand tag={Link} to='/RecentlyPlayed'><h1>HISTORY</h1></NavbarBrand>
                 </div>
