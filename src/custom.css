@@ -173,4 +173,13 @@ a:hover {
   margin-left: 0;
 }
 
+.recommend-buttons {
+  width: max-content;
+  border-radius: 0rem;
+}
+
+.recommend-button-group {
+  display: contents;
+}
+
 

@@ -3,6 +3,8 @@ import { Container, Row, NavbarBrand, Col, ButtonGroup, Button } from 'reactstra
 import  Cookies  from 'js-cookie'
 import $ from 'jquery';
 import _ from 'lodash';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClose } from '@fortawesome/free-solid-svg-icons';
 
 export class Recommend extends Component {
     constructor(props) {
@@ -61,34 +63,58 @@ export class Recommend extends Component {
 
     artistsMultiSelectList() {
         return this.state.topArtists.items.map((artist) =>
-            <Button color="primary" onClick={this.addArtist(artist.id)}>
+            <Button className='recommend-buttons' outline key={artist.id} color="primary" onClick={() => this.addArtist(artist)}>
                 {artist.name}
             </Button>
         )
     }
 
-    addArtist(artist) {
-        if (this.state.artists.includes(artist)){
-            this.setState({artists: this.state.artists.splice(this.state.artists.indexOf(artist), 1)})
-        } else {
-            this.setState({artists: this.state.artists.push(artist)})
+    artistsSelected() {
+        if (this.state.artists.length > 0){
+            return this.state.artists.map((artist) =>
+                <Button className='recommend-buttons' outline key={artist.id} color="primary" onClick={() => this.addArtist(artist)}>
+                    {artist.name} <FontAwesomeIcon icon={faClose}></FontAwesomeIcon>
+                </Button>
+            )
         }
     }
 
+    addArtist(artist) {
+        var artists = this.state.artists
+        if (artists.includes(artist)){
+            artists.splice(artists.indexOf(artist), 1)
+        } else {
+            artists.push(artist)
+        }
+        this.setState({artists: artists})
+    }
+
     tracksMultiSelectList() {
-        return this.state.topTracks.map((track) =>
-            <Button color="primary" onClick={this.addTrack(track.id)}>
+        return this.state.topTracks.items.map((track) =>
+            <Button className='recommend-buttons' outline key={track.id} color="primary" onClick={() => this.addTrack(track)}>
                 {track.name}
             </Button>
         )
     }
 
-    addTrack(track) {
-        if (this.state.tracks.includes(track)){
-            this.setState({tracks: this.state.tracks.splice(this.state.tracks.indexOf(track), 1)})
-        } else {
-            this.setState({tracks: this.state.tracks.push(track)})
+    tracksSelected() {
+        if (this.state.tracks.length > 0){
+            return this.state.tracks.map((track) =>
+                <Button className='recommend-buttons' outline key={track.id} color="primary" onClick={() => this.addTrack(track)}>
+                    {track.name} <FontAwesomeIcon icon={faClose}></FontAwesomeIcon>
+                </Button>
+            )
         }
+    }
+
+    addTrack(track) {
+        var tracks = this.state.tracks
+        if (tracks.includes(track)){
+            tracks.splice(tracks.indexOf(track), 1)
+        } else {
+            tracks.push(track)
+        }
+        this.setState({tracks: tracks})
     }
 
     genresMultiSelectList() {
@@ -107,18 +133,30 @@ export class Recommend extends Component {
 
         genres = _.orderBy(genres, (genre) => { return genre[1] }, 'desc');
         return genres.map((genre) =>
-            <Button color="primary" onClick={this.addGenre(genre)}>
-                {genre}
+            <Button className='recommend-buttons' outline key={genre[0]} color="primary" onClick={() => this.addGenre(genre[0])}>
+                {genre[0]}
             </Button>
         )
     }
 
-    addGenre(genre) {
-        if (this.state.genres.includes(genre)){
-            this.setState({genres: this.state.genres.splice(this.state.genres.indexOf(genre), 1)})
-        } else {
-            this.setState({genres: this.state.genres.push(genre)})
+    genresSelected() {
+        if (this.state.genres.length > 0){
+            return this.state.genres.map((genre) =>
+                <Button className='recommend-buttons' outline key={genre} color="primary" onClick={() => this.addGenre(genre)}>
+                    {genre} <FontAwesomeIcon icon={faClose}></FontAwesomeIcon>
+                </Button>
+            )
         }
+    }
+
+    addGenre(genre) {
+        var genres = this.state.genres
+        if (genres.includes(genre)){
+            genres.splice(genres.indexOf(genre), 1)
+        } else {
+            genres.push(genre)
+        }
+        this.setState({genres: genres})
     }
     
     render() {
@@ -129,27 +167,42 @@ export class Recommend extends Component {
         }
         return (
             <Container>
-                <Row style={{marginBottom: "1.5em", marginTop: "1.5em"}}>
+                <Row style={{marginBottom: ".5em", marginTop: "1.5em"}}>
                     <h3>ARTISTS<br/><div style={{fontSize: 'xx-small'}}>Select up to 5</div></h3>
                 </Row>
+                <Row style={{marginBottom: ".5em"}}>
+                    <ButtonGroup className='recommend-button-group'>
+                        {this.artistsSelected()}
+                    </ButtonGroup>
+                </Row>
                 <Row>
-                    <ButtonGroup>
+                    <ButtonGroup className='recommend-button-group'>
                         {this.artistsMultiSelectList()}
                     </ButtonGroup>
                 </Row>
-                <Row style={{marginBottom: "1.5em", marginTop: "1.5em"}}>
+                <Row style={{marginBottom: ".5em", marginTop: "1.5em"}}>
                     <h3>TRACKS<br/><div style={{fontSize: 'xx-small'}}>Select up to 5</div></h3>
                 </Row>
+                <Row style={{marginBottom: ".5em"}}>
+                    <ButtonGroup className='recommend-button-group'>
+                        {this.tracksSelected()}
+                    </ButtonGroup>
+                </Row>
                 <Row>
-                    <ButtonGroup>
+                    <ButtonGroup  className='recommend-button-group'>
                         {this.tracksMultiSelectList()}    
                     </ButtonGroup>
                 </Row>
-                <Row style={{marginBottom: "1.5em", marginTop: "1.5em"}}>
+                <Row style={{marginBottom: ".5em", marginTop: "1.5em"}}>
                     <h3>GENRES<br/><div style={{fontSize: 'xx-small'}}>Select up to 5</div></h3>
                 </Row>
+                <Row style={{marginBottom: ".5em"}}>
+                    <ButtonGroup className='recommend-button-group'>
+                        {this.genresSelected()}
+                    </ButtonGroup>
+                </Row>
                 <Row>
-                    <ButtonGroup>
+                    <ButtonGroup  className='recommend-button-group'>
                         {this.genresMultiSelectList()}  
                     </ButtonGroup>
                 </Row>
