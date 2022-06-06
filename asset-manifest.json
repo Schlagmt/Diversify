@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/Diversify/static/css/main.ddb78197.chunk.css",
-    "main.js": "/Diversify/static/js/main.59d24b1a.chunk.js",
-    "main.js.map": "/Diversify/static/js/main.59d24b1a.chunk.js.map",
+    "main.css": "/Diversify/static/css/main.49fef977.chunk.css",
+    "main.js": "/Diversify/static/js/main.f2e185a8.chunk.js",
+    "main.js.map": "/Diversify/static/js/main.f2e185a8.chunk.js.map",
     "runtime-main.js": "/Diversify/static/js/runtime-main.a02e1c68.js",
     "runtime-main.js.map": "/Diversify/static/js/runtime-main.a02e1c68.js.map",
     "static/css/2.179ffa5d.chunk.css": "/Diversify/static/css/2.179ffa5d.chunk.css",
-    "static/js/2.e3d17ea2.chunk.js": "/Diversify/static/js/2.e3d17ea2.chunk.js",
-    "static/js/2.e3d17ea2.chunk.js.map": "/Diversify/static/js/2.e3d17ea2.chunk.js.map",
+    "static/js/2.850269f1.chunk.js": "/Diversify/static/js/2.850269f1.chunk.js",
+    "static/js/2.850269f1.chunk.js.map": "/Diversify/static/js/2.850269f1.chunk.js.map",
     "index.html": "/Diversify/index.html",
     "static/css/2.179ffa5d.chunk.css.map": "/Diversify/static/css/2.179ffa5d.chunk.css.map",
-    "static/css/main.ddb78197.chunk.css.map": "/Diversify/static/css/main.ddb78197.chunk.css.map",
-    "static/js/2.e3d17ea2.chunk.js.LICENSE.txt": "/Diversify/static/js/2.e3d17ea2.chunk.js.LICENSE.txt"
+    "static/css/main.49fef977.chunk.css.map": "/Diversify/static/css/main.49fef977.chunk.css.map",
+    "static/js/2.850269f1.chunk.js.LICENSE.txt": "/Diversify/static/js/2.850269f1.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.a02e1c68.js",
     "static/css/2.179ffa5d.chunk.css",
-    "static/js/2.e3d17ea2.chunk.js",
-    "static/css/main.ddb78197.chunk.css",
-    "static/js/main.59d24b1a.chunk.js"
+    "static/js/2.850269f1.chunk.js",
+    "static/css/main.49fef977.chunk.css",
+    "static/js/main.f2e185a8.chunk.js"
   ]
 }
