@@ -32,7 +32,7 @@ export class Tracks extends Component {
     render() {
         if (!this.props.data){
             return (
-                <h1>Loading...</h1>
+                <h1>...</h1>
             )
         }
 

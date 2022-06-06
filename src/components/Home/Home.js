@@ -9,7 +9,7 @@ import { RecommendationHome } from './RecommendationHome';
 export class Home extends Component {
     constructor() {
         super()
-        window.history.pushState("", "", document.location.href);
+        window.history.pushState("", "", document.location.origin + document.location.pathname);
     }
     
     render() {

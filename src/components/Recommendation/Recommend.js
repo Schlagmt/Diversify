@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, NavbarBrand, Col, ButtonGroup, Button } from 'reactstrap';
+import { Tracks } from '../Shared/Tracks';
 import  Cookies  from 'js-cookie'
 import $ from 'jquery';
 import _ from 'lodash';
@@ -11,6 +12,7 @@ export class Recommend extends Component {
         super(props)
 
         this.state = {
+            recommendations: null,
             topTracks: null,
             topArtists: null,
             artists: [],
@@ -158,6 +160,33 @@ export class Recommend extends Component {
         }
         this.setState({genres: genres})
     }
+
+    recommendations() {
+
+        var artists = []
+        _.forEach(this.state.artists, (artist) => {artists.push(artist.id)});
+        var tracks = []
+        _.forEach(this.state.tracks, (track) => {tracks.push(track.id)});
+
+        var results = null;
+        $.ajax({
+            url: 'https://api.spotify.com/v1/recommendations?seed_artists=' + artists.join(',') + '&seed_tracks=' + tracks.join(',') + '&seed_genre=' + this.state.genres.join(',') + '&limit=100',
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            type: "GET",
+            headers: {
+                "Authorization": "Bearer " + Cookies.get('spotifyAuthToken')
+            },
+            success: function (data) {
+                results = data;
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+        
+        this.setState({recommendations: results?.tracks})
+    }
     
     render() {
         if (!this.state.topArtists || !this.state.topTracks){
@@ -167,8 +196,8 @@ export class Recommend extends Component {
         }
         return (
             <Container>
-                <Row style={{marginBottom: ".5em", marginTop: "1.5em"}}>
-                    <h3>ARTISTS<br/><div style={{fontSize: 'xx-small'}}>Select up to 5</div></h3>
+                <Row style={{marginBottom: ".5em", marginTop: ".5em"}}>
+                    <h3><div style={{fontSize: 'x-small'}}>Select a combination of 5 entities</div><br/>ARTISTS</h3>
                 </Row>
                 <Row style={{marginBottom: ".5em"}}>
                     <ButtonGroup className='recommend-button-group'>
@@ -181,7 +210,7 @@ export class Recommend extends Component {
                     </ButtonGroup>
                 </Row>
                 <Row style={{marginBottom: ".5em", marginTop: "1.5em"}}>
-                    <h3>TRACKS<br/><div style={{fontSize: 'xx-small'}}>Select up to 5</div></h3>
+                    <h3>TRACKS</h3>
                 </Row>
                 <Row style={{marginBottom: ".5em"}}>
                     <ButtonGroup className='recommend-button-group'>
@@ -194,17 +223,30 @@ export class Recommend extends Component {
                     </ButtonGroup>
                 </Row>
                 <Row style={{marginBottom: ".5em", marginTop: "1.5em"}}>
-                    <h3>GENRES<br/><div style={{fontSize: 'xx-small'}}>Select up to 5</div></h3>
+                    <h3>GENRES</h3>
                 </Row>
                 <Row style={{marginBottom: ".5em"}}>
                     <ButtonGroup className='recommend-button-group'>
                         {this.genresSelected()}
                     </ButtonGroup>
                 </Row>
-                <Row>
+                <Row style={{marginBottom: "1.5em"}}>
                     <ButtonGroup  className='recommend-button-group'>
                         {this.genresMultiSelectList()}  
                     </ButtonGroup>
+                </Row>
+                <Row style={{marginBottom: ".5em"}}>
+                    <ButtonGroup  className='recommend-button-group'>
+                        <Button className='recommend-buttons' outline key='recommed' color="primary" onClick={() => this.recommendations()}>
+                            RECOMMED
+                        </Button>
+                    </ButtonGroup>
+                </Row>
+                <Row style={{marginBottom: ".5em", marginTop: "1.5em"}}>
+                    <h3>RESULTS</h3>
+                </Row>
+                <Row  md="6" xs="2" style={{marginBottom: ".5em"}}>
+                    <Tracks data={this.state.recommendations} limit={18}></Tracks>
                 </Row>
             </Container>
             

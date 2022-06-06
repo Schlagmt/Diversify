@@ -63,7 +63,7 @@ export class UserDetails extends Component {
                     </Col>
                     <Col md='8'>
                         <Row className="d-flex justify-content-center">
-                            <NavbarBrand><h1>{this.state.userData.display_name}</h1></NavbarBrand>
+                            <h1>{this.state.userData.display_name}</h1>
                         </Row>
                         <Genres data={this.state.genreData.items} limit={30}></Genres>
                     </Col>

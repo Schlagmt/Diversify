@@ -20,7 +20,7 @@ export class Genres extends Component {
 
         genres = _.orderBy(genres, (genre) => { return genre[1] }, 'desc').slice(0,this.props.limit);
         return genres.map((genre) =>
-            <Col key={_.upperCase(genre[0])} xs='auto' style={{paddingLeft: '.25em', paddingRight: '.25em'}}>
+            <Col key={_.upperCase(genre[0])} xs='auto' style={{paddingLeft: '0em', paddingRight: '0em'}}>
                 <NavbarBrand tag={Link} to={'/Genre?genre=' + genre[0]}><div className='bg-genre'>{_.upperCase(genre[0])}</div></NavbarBrand>
             </Col>
         )
