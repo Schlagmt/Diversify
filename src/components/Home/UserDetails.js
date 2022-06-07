@@ -36,7 +36,7 @@ export class UserDetails extends Component {
 
     loadGenreData(){
         return $.ajax({
-            url: 'https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=50',
+            url: 'https://api.spotify.com/v1/me/top/artists?time_range=long_term&limit=50',
             async: false,
             contentType: "application/json; charset=utf-8",
             type: "GET",
@@ -57,8 +57,8 @@ export class UserDetails extends Component {
         }
         return (
             <Container>
-                <Row md="2" sx="1" style={{width: '100%'}}>
-                    <Col md="4" style={{paddingRight: 0, paddingLeft: 0}}>
+                <Row  md="2" sx="1" style={{width: '100%'}}>
+                    <Col md="4" style={{textAlign: 'center'}}>
                         <img src={this.state.userData.images[0].url} alt="user" style={{borderRadius: "50%"}}></img>
                     </Col>
                     <Col md='8'>

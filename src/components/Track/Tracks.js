@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import { Container, Row, Col, Table } from 'reactstrap';
+import { Container, Row, Col, Table, Spinner } from 'reactstrap';
 import Cookies from 'js-cookie';
 import { Emoji } from '../Shared/Emoji';
 
@@ -82,18 +82,12 @@ export class Tracks extends Component {
             return null;
         }
     }
-    
-    render() {
-        if (!this.state.topTracks){
+
+    displayTable(){
+        if (this.state.topTracks){
+            var rest = this.state.topTracks.items.slice(9,50)
+            if (rest !== [])
             return (
-                <h1>Loading...</h1>
-            )
-        }
-        return (
-            <Container>
-                <Row md="3" xs="3">
-                    {this.displayTopNineTracks()}
-                </Row>
                 <Row style={{marginBottom: "3em", marginTop: "3em"}}>
                     <Table>
                         <thead>
@@ -117,6 +111,27 @@ export class Tracks extends Component {
                         </tbody>
                     </Table>
                 </Row>
+            )
+        }
+        else{
+            return null;
+        }
+    }
+    
+    render() {
+        if (!this.state.topTracks){
+            return (
+                <Spinner>
+                    Loading...
+                </Spinner>
+            )
+        }
+        return (
+            <Container>
+                <Row md="3" xs="3">
+                    {this.displayTopNineTracks()}
+                </Row>
+                {this.displayTable()}
             </Container>
         );
     }

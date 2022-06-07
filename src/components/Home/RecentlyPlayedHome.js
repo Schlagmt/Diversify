@@ -35,13 +35,11 @@ export class RecentlyPlayedHome extends Component {
     
     render() {
         if (!this.state.recentlyPlayed){
-            return (
-                <h1>Loading...</h1>
-            )
+            return <div></div>
         }
         return (
             <Col style={{marginBottom: '2em'}}>
-                <img className="bg-image" src={this.state.recentlyPlayed.items[0].track.album.images[0].url} alt={this.state.recentlyPlayed.items[0].track.album.name} style={{aspectRatio: '1',maxHeight:"100%",maxWidth:"100%"}}></img>
+                <img className="bg-image" src={this.state.recentlyPlayed.items[0].track.album.images[0].url} alt={this.state.recentlyPlayed.items[0].track.album.name} style={{aspectRatio: '1/1' ,height:"100%",width:"100%"}}></img>
                 <div className="bg-text">
                     <NavbarBrand tag={Link} to='/RecentlyPlayed'>HISTORY</NavbarBrand>
                 </div>

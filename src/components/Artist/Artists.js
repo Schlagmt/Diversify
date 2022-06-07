@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import { Container, Row, Col, Table } from 'reactstrap';
+import { Container, Row, Col, Table, Spinner } from 'reactstrap';
 import Cookies from 'js-cookie';
 import { Genres } from '../Shared/Genres';
 import { Emoji } from '../Shared/Emoji';
@@ -80,11 +80,50 @@ export class Artists extends Component {
             return null;
         }
     }
+
+    displayTable() {
+        if (this.state.topArtists){
+            var rest = this.state.topArtists.items.slice(9,50)
+            if (rest !== []){
+                return (
+                    <Row style={{marginBottom: "3em", marginTop: "3em"}}>
+                        <Table>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        #
+                                    </th>
+                                    <th style={{minWidth: '57px'}}>
+                                        
+                                    </th>
+                                    <th>
+                                        Artist
+                                    </th>
+                                    <th>
+                                        
+                                    </th>
+                                </tr>    
+                            </thead>
+                            
+                            <tbody>
+                                {this.displayRestArtists()}
+                            </tbody>
+                        </Table>
+                    </Row>
+                )
+            }
+        }
+        else{
+            return null;
+        }
+    }
     
     render() {
         if (!this.state.topArtists){
             return (
-                <h1>Loading...</h1>
+                <Spinner>
+                    Loading...
+                </Spinner>
             )
         }
         return (
@@ -95,30 +134,7 @@ export class Artists extends Component {
                 <Row style={{marginBottom: "3em", marginTop: "2em"}} md="3" xs="3">
                     {this.displayTopNineArtists()}
                 </Row>
-                <Row style={{marginBottom: "3em", marginTop: "3em"}}>
-                    <Table>
-                        <thead>
-                            <tr>
-                                <th>
-                                    #
-                                </th>
-                                <th style={{minWidth: '57px'}}>
-                                    
-                                </th>
-                                <th>
-                                    Artist
-                                </th>
-                                <th>
-                                    
-                                </th>
-                            </tr>    
-                        </thead>
-                        
-                        <tbody>
-                            {this.displayRestArtists()}
-                        </tbody>
-                    </Table>
-                </Row>
+                {this.displayTable()}
             </Container>
         );
     }

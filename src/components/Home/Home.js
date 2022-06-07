@@ -18,7 +18,7 @@ export class Home extends Component {
                 <Row style={{marginBottom: "3em", marginTop: "3em"}}>
                     <UserDetails></UserDetails>
                 </Row>
-                <Row md="3" xs="1">
+                <Row md="3" sm="1">
                     <TopArtistsHome></TopArtistsHome>
                     <TopTracksHome></TopTracksHome>
                     <RecentlyPlayedHome></RecentlyPlayedHome>
