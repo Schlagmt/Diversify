@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, NavbarBrand } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import _ from 'lodash';
 import { Emoji } from '../Shared/Emoji';
 
@@ -10,7 +10,9 @@ export class Tracks extends Component {
         return splitData.map((track) =>
             <Col key={track.id}>
                 <Row>
-                    <img className='track-img' src={track.album.images[0]?.url} alt={track.name}></img>
+                    <a className='track-img' href={track.external_urls.spotify} target='_blank' rel="noreferrer">
+                        <img className='track-img' src={track.album.images[0]?.url} alt={track.name}></img>
+                    </a>
                 </Row>
                 <Row>
                     <Col xs='10' style={{paddingRight: 0, paddingLeft: 0}}>

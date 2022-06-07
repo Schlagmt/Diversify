@@ -15,10 +15,10 @@ export class Home extends Component {
     render() {
         return (
             <Container>
-                <Row style={{marginBottom: "3em", marginTop: "3em"}}>
+                <Row style={{marginBottom: "3em", marginTop: "1em"}}>
                     <UserDetails></UserDetails>
                 </Row>
-                <Row md="3" sm="1">
+                <Row md="3" xs="1">
                     <TopArtistsHome></TopArtistsHome>
                     <TopTracksHome></TopTracksHome>
                     <RecentlyPlayedHome></RecentlyPlayedHome>

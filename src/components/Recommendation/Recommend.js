@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Container, Row, NavbarBrand, Col, ButtonGroup, Button } from 'reactstrap';
+import { Container, Row, ButtonGroup, Button } from 'reactstrap';
 import { Tracks } from '../Shared/Tracks';
 import  Cookies  from 'js-cookie'
 import $ from 'jquery';
 import _ from 'lodash';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
+import { Emoji } from '../Shared/Emoji';
 
 export class Recommend extends Component {
     constructor(props) {
@@ -64,9 +65,10 @@ export class Recommend extends Component {
     }
 
     artistsMultiSelectList() {
-        return this.state.topArtists.items.map((artist) =>
+        var artists = this.state.topArtists.items.splice(0,20);
+        return artists.map((artist) =>
             <Button className='recommend-buttons' outline key={artist.id} color="primary" onClick={() => this.addArtist(artist)}>
-                {artist.name}
+                {artist.name} <div style={{float: 'right'}}><Emoji score={artist.popularity}></Emoji></div>
             </Button>
         )
     }
@@ -92,9 +94,10 @@ export class Recommend extends Component {
     }
 
     tracksMultiSelectList() {
-        return this.state.topTracks.items.map((track) =>
+        var tracks = this.state.topTracks.items.splice(0,20);
+        return tracks.map((track) =>
             <Button className='recommend-buttons' outline key={track.id} color="primary" onClick={() => this.addTrack(track)}>
-                {track.name}
+                {track.name} <div style={{float: 'right'}}><Emoji score={track.popularity}></Emoji></div>
             </Button>
         )
     }
@@ -120,7 +123,7 @@ export class Recommend extends Component {
     }
 
     genresMultiSelectList() {
-        var genres = []
+        var genres = [];
         _.forEach(this.state.topArtists.items, (item) => {
             _.forEach(item.genres, (genre) => {
                 var val = _.filter(genres, (g) => { return g[0] === genre });
@@ -134,6 +137,7 @@ export class Recommend extends Component {
         });
 
         genres = _.orderBy(genres, (genre) => { return genre[1] }, 'desc');
+        genres = genres.splice(0,20);
         return genres.map((genre) =>
             <Button className='recommend-buttons' outline key={genre[0]} color="primary" onClick={() => this.addGenre(genre[0])}>
                 {genre[0]}

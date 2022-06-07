@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import { Container, Row, Col, NavbarBrand } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import Cookies from 'js-cookie'
 import { Genres } from '../Shared/Genres';
 
@@ -57,13 +57,15 @@ export class UserDetails extends Component {
         }
         return (
             <Container>
-                <Row  md="2" sx="1" style={{width: '100%'}}>
-                    <Col md="4" style={{textAlign: 'center'}}>
+                <Row style={{width: '100%'}}>
+                    <Col lg="4" style={{textAlign: 'center'}}>
                         <img src={this.state.userData.images[0].url} alt="user" style={{borderRadius: "50%"}}></img>
                     </Col>
-                    <Col md='8'>
-                        <Row className="d-flex justify-content-center">
-                            <h1>{this.state.userData.display_name}</h1>
+                    <Col lg='8'>
+                        <Row>
+                            <Col style={{textAlign: 'center'}}>
+                                <h1>{this.state.userData.display_name}</h1>
+                            </Col>
                         </Row>
                         <Genres data={this.state.genreData.items} limit={30}></Genres>
                     </Col>

@@ -42,7 +42,7 @@ export class PlayedTracks extends Component {
                         <div className="overlayTrack">
                             {index + 1}. {track.track.name} <Emoji score={track.track.popularity}></Emoji>
                             <div style={{fontSize: 'xx-small'}}>{track.track.album.artists[0].name}</div>
-                            <div style={{fontSize: 'xx-small'}}><Moment>{track.played_at}</Moment></div>
+                            <div style={{fontSize: 'xx-small'}}><Moment format="YYYY/MM/DD hh:mm">{track.played_at}</Moment></div>
                         </div>
                     </div>
                 </Col>
