@@ -23,14 +23,14 @@ export class Recommend extends Component {
     }
 
     componentDidMount(){
-        this.setState({topTracks: (this.loadTrackData()).responseJSON});
-        this.setState({topArtists: (this.loadArtistData()).responseJSON});
+        this.setState({topTracks: ((this.loadTrackData()).responseJSON).items.slice(0,20)});
+        this.setState({topArtists: ((this.loadArtistData()).responseJSON).items.slice(0,20)});
     }
 
     componentDidUpdate(prevProps){
         if (prevProps.term !== this.props.term){
-            this.setState({topTracks: (this.loadTrackData()).responseJSON});
-            this.setState({topArtists: (this.loadArtistData()).responseJSON});
+            this.setState({topTracks: ((this.loadTrackData()).responseJSON).items.slice(0,20)});
+            this.setState({topArtists: ((this.loadArtistData()).responseJSON).items.slice(0,20)});
         }
     }
 
@@ -65,8 +65,7 @@ export class Recommend extends Component {
     }
 
     artistsMultiSelectList() {
-        var artists = this.state.topArtists.items.splice(0,20);
-        return artists.map((artist) =>
+        return this.state.topArtists.map((artist) =>
             <Button className='recommend-buttons' outline key={artist.id} color="primary" onClick={() => this.addArtist(artist)}>
                 {artist.name} <div style={{float: 'right'}}><Emoji score={artist.popularity}></Emoji></div>
             </Button>
@@ -94,8 +93,7 @@ export class Recommend extends Component {
     }
 
     tracksMultiSelectList() {
-        var tracks = this.state.topTracks.items.splice(0,20);
-        return tracks.map((track) =>
+        return this.state.topTracks.map((track) =>
             <Button className='recommend-buttons' outline key={track.id} color="primary" onClick={() => this.addTrack(track)}>
                 {track.name} <div style={{float: 'right'}}><Emoji score={track.popularity}></Emoji></div>
             </Button>
@@ -124,7 +122,7 @@ export class Recommend extends Component {
 
     genresMultiSelectList() {
         var genres = [];
-        _.forEach(this.state.topArtists.items, (item) => {
+        _.forEach(this.state.topArtists, (item) => {
             _.forEach(item.genres, (genre) => {
                 var val = _.filter(genres, (g) => { return g[0] === genre });
                 if (val.length === 0){
